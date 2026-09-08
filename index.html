@@ -135,6 +135,7 @@
       overflow: hidden;
       min-width: 320px;
       min-height: 200px;
+      max-height: calc(100vh - var(--taskbar-h) - 16px);
       z-index: 50;
       transition: box-shadow 0.15s ease;
     }
@@ -1193,6 +1194,178 @@
       font-size: 0.75rem;
     }
 
+    /* Drone Photogrammetry / PowerPoint Viewer */
+    .drone-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      background: #0b0f19;
+      color: #e2e8f0;
+      overflow: hidden;
+    }
+    .drone-ribbon {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 12px;
+      background: #141b2d;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .drone-nav-grp {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .drone-counter {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #f8fafc;
+      padding: 3px 8px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .drone-tabs {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+    .drone-body {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+    .drone-filmstrip {
+      width: 170px;
+      background: #090d16;
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .drone-thumb-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 6px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .drone-thumb-item:hover {
+      background: rgba(249,115,22,0.12);
+      border-color: rgba(249,115,22,0.35);
+    }
+    .drone-thumb-item.active {
+      background: rgba(249,115,22,0.22);
+      border-color: #f97316;
+      box-shadow: 0 0 10px rgba(249,115,22,0.3);
+    }
+    .drone-thumb-preview {
+      width: 100%;
+      height: 82px;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #0b1120;
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      user-select: none;
+    }
+    .drone-thumb-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .drone-thumb-label {
+      font-size: 0.67rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .drone-stage {
+      flex: 1;
+      background: #070a12;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 12px 16px;
+      box-sizing: border-box;
+    }
+    .drone-slide-card {
+      width: 100%;
+      max-width: 820px;
+      margin: auto 0;
+      background: #0e1526;
+      border: 1px solid rgba(249,115,22,0.3);
+      border-radius: 10px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.7);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: fadeInSlide 0.2s ease;
+      flex-shrink: 0;
+    }
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: none; }
+    }
+    .drone-slide-header {
+      padding: 10px 16px;
+      background: #141c30;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .drone-slide-content {
+      padding: 14px 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .drone-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.77rem;
+    }
+    .drone-table th, .drone-table td {
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      text-align: left;
+    }
+    .drone-table th {
+      background: #151d32;
+      color: #f97316;
+      font-weight: 700;
+    }
+    .drone-table tr:nth-child(even) td {
+      background: rgba(255,255,255,0.02);
+    }
+    .drone-tab-pane {
+      display: none;
+      flex: 1;
+      overflow: hidden;
+      flex-direction: column;
+    }
+    .drone-tab-pane.active {
+      display: flex;
+    }
 
     /* Taskbar */
     #taskbar {
@@ -1582,10 +1755,6 @@
     <div class="ico"><i data-lucide="bot" style="width:42px;height:42px;color:#a855f7"></i></div>
     <span class="lbl">Robot C++ Project</span>
   </div>
-  <div class="dicon" id="dic-ps" style="top:260px;left:20px" title="PowerShell — Interactive Python 3 REPL terminal" onclick="show('ps-win')" ondblclick="show('ps-win')">
-    <div class="ico"><i data-lucide="terminal-square" style="width:42px;height:42px;color:#60a5fa"></i></div>
-    <span class="lbl">PowerShell</span>
-  </div>
   <div class="dicon" id="dic-resume" style="top:20px;left:136px" title="Resume.pdf — Jacob Williams' full resume" onclick="show('pdf-win')" ondblclick="show('pdf-win')">
     <div class="ico"><i data-lucide="file-text" style="width:42px;height:42px;color:#ef4444"></i></div>
     <span class="lbl">Resume.pdf</span>
@@ -1593,6 +1762,10 @@
   <div class="dicon" id="dic-photos" style="top:140px;left:136px" title="Peace Corps Photos — 22 photos from 6-month service in rural Thailand" onclick="openPhotosApp(0)" ondblclick="openPhotosApp(0)">
     <div class="ico"><i data-lucide="images" style="width:42px;height:42px;color:#ec4899"></i></div>
     <span class="lbl">Peace Corps Photos</span>
+  </div>
+  <div class="dicon" id="dic-drone" style="top:260px;left:136px" title="Drone Photogrammetry & Orthophoto Mapping — Aerial drone survey and 3D terrain reconstruction (.pptx)" onclick="show('drone-win')" ondblclick="show('drone-win')">
+    <div class="ico"><i data-lucide="presentation" style="width:42px;height:42px;color:#f97316"></i></div>
+    <span class="lbl">Drone Orthophoto.pptx</span>
   </div>
   <div class="dicon" id="dic-notepad" style="top:20px;left:252px" title="Welcome.txt — Recruiter guide and tour of this portfolio" onclick="show('notepad-win')" ondblclick="show('notepad-win')">
     <div class="ico"><i data-lucide="file-text" style="width:42px;height:42px;color:#38bdf8"></i></div>
@@ -1750,6 +1923,9 @@ Welcome to my PC! feel free to poke around.
         </div>
         <div class="ex-sideitem" id="side-photos" onclick="openExplorer('photos')">
           <i data-lucide="images" style="width:15px;height:15px;color:#ec4899"></i> Peace Corps Photos
+        </div>
+        <div class="ex-sideitem" id="side-drone" onclick="openExplorer('drone')">
+          <i data-lucide="presentation" style="width:15px;height:15px;color:#f97316"></i> Drone Photogrammetry
         </div>
       </div>
       <div class="ex-files" id="ex-files"></div>
@@ -1977,6 +2153,9 @@ Welcome to my PC! feel free to poke around.
         <button class="vm-tab-btn active" id="tab-btn-sim" onclick="switchVmTab('sim')">
           <i data-lucide="network" style="width:12px;height:12px"></i> Topology &amp; Terminal
         </button>
+        <button class="vm-tab-btn" id="tab-btn-readme" onclick="switchVmTab('readme')">
+          <i data-lucide="book-open" style="width:12px;height:12px;color:#fbbf24"></i> README / What's Happening
+        </button>
         <button class="vm-tab-btn" id="tab-btn-code" onclick="switchVmTab('code')">
           <i data-lucide="file-code" style="width:12px;height:12px"></i> Source Code Viewer
         </button>
@@ -1997,11 +2176,8 @@ Welcome to my PC! feel free to poke around.
             </span>
           </div>
           <div style="display:flex;gap:5px;flex-shrink:0">
-            <button class="vm-tab-btn" onclick="openScenarioGuide()" style="background:rgba(56,189,248,0.18);border:1px solid #38bdf8;color:#7dd3fc;font-weight:600;font-size:0.72rem;padding:3px 8px" title="What each scenario does">
-              <i data-lucide="help-circle" style="width:12px;height:12px;color:#38bdf8"></i> What's Happening?
-            </button>
-            <button class="vm-tab-btn" onclick="openCodeViewer('README.md')" style="background:rgba(251,191,36,0.18);border:1px solid #fbbf24;color:#fde047;font-weight:600;font-size:0.72rem;padding:3px 8px" title="Open README.md Architecture Specification">
-              <i data-lucide="book-open" style="width:12px;height:12px;color:#fbbf24"></i> README
+            <button class="vm-tab-btn" onclick="switchVmTab('readme')" style="background:rgba(56,189,248,0.18);border:1px solid #38bdf8;color:#7dd3fc;font-weight:600;font-size:0.72rem;padding:3px 10px" title="README Specification &amp; Scenario Overview">
+              <i data-lucide="book-open" style="width:12px;height:12px;color:#38bdf8"></i> README / What's Happening
             </button>
           </div>
         </div>
@@ -2059,13 +2235,121 @@ Welcome to my PC! feel free to poke around.
         </div>
       </div>
 
-      <!-- PANE 2: Complete Source Code Viewer -->
+      <!-- PANE 2: Combined README & What's Happening Overview -->
+      <div class="vm-pane" id="vm-pane-readme" style="flex:1;display:none;flex-direction:column;overflow-y:auto;padding:16px;gap:12px;background:#090d16">
+        
+        <!-- Section 1: Project Overview (Minimal, clear) -->
+        <div style="background:#0e1526;border:1px solid rgba(56,189,248,0.35);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:8px;flex-wrap:wrap;gap:8px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <i data-lucide="network" style="width:18px;height:18px;color:#38bdf8"></i>
+              <h3 style="margin:0;font-size:0.95rem;color:#f8fafc">Computer Networking Lab — Full-Stack TCP/IP Protocol Suite</h3>
+            </div>
+            <span style="font-size:0.7rem;background:rgba(56,189,248,0.2);color:#7dd3fc;padding:2px 8px;border-radius:4px;font-weight:600">BYU CS 460 · Python 3</span>
+          </div>
+
+          <div style="font-size:0.78rem;color:#cbd5e1;line-height:1.5;display:flex;flex-direction:column;gap:3px">
+            <div><strong>Author:</strong> Jacob Williams</div>
+            <div><strong>Environment:</strong> Debian Linux &amp; CougarNet Virtual Topology</div>
+          </div>
+
+          <div style="height:1px;background:rgba(255,255,255,0.08);margin:2px 0"></div>
+
+          <div>
+            <h4 style="margin:0 0 6px 0;font-size:0.84rem;color:#38bdf8;display:flex;align-items:center;gap:6px">
+              <i data-lucide="layers" style="width:14px;height:14px"></i> Layer Architecture
+            </h4>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));gap:6px">
+              <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:7px 10px;font-size:0.74rem;line-height:1.45;color:#cbd5e1">
+                <strong style="color:#f472b6">Layer 5 (Application):</strong> <code style="color:#fbcfe8">echoserver.py</code> — TCP echo server daemon.
+              </div>
+              <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:7px 10px;font-size:0.74rem;line-height:1.45;color:#cbd5e1">
+                <strong style="color:#4ade80">Layer 4 (Transport):</strong> <code style="color:#bbf7d0">mysocket.py</code> &amp; <code style="color:#bbf7d0">buffer.py</code> — TCP 3-way handshake &amp; sliding window.
+              </div>
+              <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:7px 10px;font-size:0.74rem;line-height:1.45;color:#cbd5e1">
+                <strong style="color:#fbbf24">Layer 3 (Network):</strong> <code style="color:#fde68a">forwarding_table.py</code> (CIDR LPM) &amp; <code style="color:#fde68a">dvrouter.py</code> (Bellman-Ford).
+              </div>
+              <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:7px 10px;font-size:0.74rem;line-height:1.45;color:#cbd5e1">
+                <strong style="color:#c084fc">Layer 2 (Data Link):</strong> <code style="color:#e9d5ff">switch.py</code> — Self-learning MAC table &amp; broadcast flooding.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: What's Happening in Each Scenario (Minimal, simple explanations) -->
+        <div style="background:#0e1526;border:1px solid rgba(56,189,248,0.35);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+          <h4 style="margin:0;font-size:0.88rem;color:#f8fafc;display:flex;align-items:center;gap:6px">
+            <i data-lucide="help-circle" style="width:15px;height:15px;color:#38bdf8"></i> What's Happening in Each Scenario
+          </h4>
+
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="background:#111726;border-left:3px solid #c084fc;border-radius:4px;padding:7px 12px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px">
+                <strong style="font-size:0.77rem;color:#c084fc">Scenario 1: Subnet Broadcast &amp; L2 Flooding</strong>
+                <span style="font-size:0.67rem;color:#94a3b8">switch.py · Layer 2</span>
+              </div>
+              <p style="margin:0;font-size:0.74rem;color:#cbd5e1;line-height:1.4">
+                Host A sends an ICMP broadcast frame. Switch S1 learns Host A's MAC address and floods the frame to Host B and Router R1.
+              </p>
+            </div>
+
+            <div style="background:#111726;border-left:3px solid #fbbf24;border-radius:4px;padding:7px 12px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px">
+                <strong style="font-size:0.77rem;color:#fbbf24">Scenario 2: Multi-Hop CIDR Routing</strong>
+                <span style="font-size:0.67rem;color:#94a3b8">forwarding_table.py · Layer 3</span>
+              </div>
+              <p style="margin:0;font-size:0.74rem;color:#cbd5e1;line-height:1.4">
+                Host A pings Server D across 4 router hops. Each router matches destination IPs with bitwise Longest Prefix Matching (LPM) and decrements TTL.
+              </p>
+            </div>
+
+            <div style="background:#111726;border-left:3px solid #38bdf8;border-radius:4px;padding:7px 12px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px">
+                <strong style="font-size:0.77rem;color:#38bdf8">Scenario 3: Distance-Vector (Bellman-Ford)</strong>
+                <span style="font-size:0.67rem;color:#94a3b8">dvrouter.py · Layer 3</span>
+              </div>
+              <p style="margin:0;font-size:0.74rem;color:#cbd5e1;line-height:1.4">
+                Routers exchange distance vectors periodically over UDP. Cost matrices update dynamically until optimal shortest paths converge.
+              </p>
+            </div>
+
+            <div style="background:#111726;border-left:3px solid #4ade80;border-radius:4px;padding:7px 12px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px">
+                <strong style="font-size:0.77rem;color:#4ade80">Scenario 4: TCP Handshake &amp; Streaming</strong>
+                <span style="font-size:0.67rem;color:#94a3b8">mysocket.py &amp; buffer.py · Layer 4</span>
+              </div>
+              <p style="margin:0;font-size:0.74rem;color:#cbd5e1;line-height:1.4">
+                Host A and Server D establish a TCP session via a 3-way handshake (SYN &rarr; SYN-ACK &rarr; ACK) and stream data through sliding window buffers.
+              </p>
+            </div>
+
+            <div style="background:#111726;border-left:3px solid #f472b6;border-radius:4px;padding:7px 12px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px">
+                <strong style="font-size:0.77rem;color:#f472b6">Scenario 5: Full-Stack Simulation</strong>
+                <span style="font-size:0.67rem;color:#94a3b8">All Modules · Layers 1–5</span>
+              </div>
+              <p style="margin:0;font-size:0.74rem;color:#cbd5e1;line-height:1.4">
+                Executes the complete custom internet protocol suite (L2 switch, L3 Bellman-Ford routers, and L4 TCP sockets) concurrently end-to-end.
+              </p>
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px">
+            <button class="vm-tab-btn" onclick="switchVmTab('sim')" style="background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.4);color:#7dd3fc;padding:5px 12px;font-size:0.73rem;cursor:pointer">
+              &larr; Back to Topology &amp; Terminal
+            </button>
+            <button class="vm-tab-btn" onclick="switchVmTab('code')" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#f1f5f9;padding:5px 12px;font-size:0.73rem;cursor:pointer">
+              View Source Code &rarr;
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PANE 3: Complete Source Code Viewer (README removed from tabs) -->
       <div class="vm-pane" id="vm-pane-code" style="flex:1;display:none;flex-direction:column;overflow:hidden">
         <div class="code-viewer-container" style="flex:1;display:flex;flex-direction:column;overflow:hidden">
           <div class="code-tabs" id="code-tabs-bar" style="display:flex;gap:4px;padding:8px 12px;background:#111726;border-bottom:1px solid var(--border);overflow-x:auto;flex-shrink:0">
-            <div class="code-tab" style="background:rgba(251,191,36,0.18);border:1px solid rgba(251,191,36,0.45);color:#fbbf24;font-weight:700" onclick="loadCodeFile('README.md', this)">
-              <i data-lucide="book-open" style="width:12px;height:12px;color:#fbbf24"></i> 📖 README.md
-            </div>
             <div class="code-tab active" onclick="loadCodeFile('mysocket.py', this)"><i data-lucide="file-code" style="width:12px;height:12px"></i> mysocket.py</div>
             <div class="code-tab" onclick="loadCodeFile('dvrouter.py', this)"><i data-lucide="file-code" style="width:12px;height:12px"></i> dvrouter.py</div>
             <div class="code-tab" onclick="loadCodeFile('forwarding_table.py', this)"><i data-lucide="file-code" style="width:12px;height:12px"></i> forwarding_table.py</div>
@@ -2078,78 +2362,6 @@ Welcome to my PC! feel free to poke around.
             <div class="code-tab" onclick="loadCodeFile('prefix.py', this)"><i data-lucide="file-code" style="width:12px;height:12px"></i> prefix.py</div>
           </div>
           <pre class="code-content" id="code-file-display"></pre>
-        </div>
-      </div>
-
-      <!-- Scenario Guide Modal Overlay -->
-      <div id="scen-guide-overlay" style="display:none;position:absolute;inset:0;background:rgba(5,8,16,0.92);backdrop-filter:blur(8px);z-index:250;flex-direction:column;align-items:center;justify-content:center;padding:16px" onclick="if(event.target===this)closeScenarioGuide()">
-        <div style="background:#0e1526;border:1px solid rgba(56,189,248,0.4);border-radius:10px;box-shadow:0 24px 64px rgba(0,0,0,0.85);max-width:860px;width:95%;max-height:90%;display:flex;flex-direction:column;overflow:hidden">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:#151c2d;border-bottom:1px solid var(--border)">
-            <div style="display:flex;align-items:center;gap:8px;font-size:0.88rem;font-weight:700;color:#38bdf8">
-              <i data-lucide="help-circle" style="width:16px;height:16px"></i> Interactive Simulation Scenarios — What Each Scenario Does
-            </div>
-            <div class="wbtn close" onclick="closeScenarioGuide()" style="cursor:pointer;padding:4px 8px;border-radius:4px">
-              <i data-lucide="x" style="width:14px;height:14px"></i>
-            </div>
-          </div>
-          <div style="flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;background:#090d16">
-            
-            <div style="background:#111726;border:1px solid rgba(168,85,247,0.3);border-radius:8px;padding:12px 14px">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-                <strong style="color:#c084fc;font-size:0.84rem">Scenario 1: Subnet Broadcasts &amp; Layer-2 Flooding</strong>
-                <span style="font-size:0.68rem;background:rgba(168,85,247,0.2);color:#c084fc;padding:2px 8px;border-radius:4px;font-weight:600">Layer 2 (Data Link)</span>
-              </div>
-              <p style="font-size:0.75rem;color:#cbd5e1;line-height:1.5;margin:0 0 6px 0">
-                <strong>What is happening:</strong> Host A transmits an ICMP broadcast frame to <code>10.0.0.255</code> (MAC <code>FF:FF:FF:FF:FF:FF</code>). Custom <code>switch.py</code> learns the source MAC address and floods the raw Ethernet frame out to all connected ports (Host B and Router R1) without dropped packets.
-              </p>
-              <div style="font-size:0.7rem;color:#94a3b8"><strong>Component Tested:</strong> <code>switch.py</code> (Layer 2 Learning Switch)</div>
-            </div>
-
-            <div style="background:#111726;border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:12px 14px">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-                <strong style="color:#fbbf24;font-size:0.84rem">Scenario 2: Static Multi-Hop Forwarding</strong>
-                <span style="font-size:0.68rem;background:rgba(245,158,11,0.2);color:#fcd34d;padding:2px 8px;border-radius:4px;font-weight:600">Layer 3 (Network Routing)</span>
-              </div>
-              <p style="font-size:0.75rem;color:#cbd5e1;line-height:1.5;margin:0 0 6px 0">
-                <strong>What is happening:</strong> Host A pings Server D across 4 router hops (<code>R1 → R2 → R3 → R4</code>). Each router uses <code>forwarding_table.py</code> with bitwise CIDR Longest Prefix Matching (LPM) to look up next-hop interfaces and decrement TTL.
-              </p>
-              <div style="font-size:0.7rem;color:#94a3b8"><strong>Component Tested:</strong> <code>forwarding_table.py</code> &amp; <code>prefix.py</code> (CIDR LPM Table)</div>
-            </div>
-
-            <div style="background:#111726;border:1px solid rgba(56,189,248,0.3);border-radius:8px;padding:12px 14px">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-                <strong style="color:#38bdf8;font-size:0.84rem">Scenario 3: Distance-Vector (Bellman-Ford) Routing</strong>
-                <span style="font-size:0.68rem;background:rgba(56,189,248,0.2);color:#7dd3fc;padding:2px 8px;border-radius:4px;font-weight:600">Layer 3 (Dynamic Protocols)</span>
-              </div>
-              <p style="font-size:0.75rem;color:#cbd5e1;line-height:1.5;margin:0 0 6px 0">
-                <strong>What is happening:</strong> Routers R1–R4 initialize without prior routing knowledge. They periodically exchange distance vector packets over UDP sockets using the distributed Bellman-Ford algorithm until cost matrices fully converge on optimal paths.
-              </p>
-              <div style="font-size:0.7rem;color:#94a3b8"><strong>Component Tested:</strong> <code>dvrouter.py</code> (Distributed Bellman-Ford Engine)</div>
-            </div>
-
-            <div style="background:#111726;border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:12px 14px">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-                <strong style="color:#4ade80;font-size:0.84rem">Scenario 4: Multi-Hop TCP 3-Way Handshake &amp; Streaming</strong>
-                <span style="font-size:0.68rem;background:rgba(34,197,94,0.2);color:#86efac;padding:2px 8px;border-radius:4px;font-weight:600">Layer 4 (Reliable Transport)</span>
-              </div>
-              <p style="font-size:0.75rem;color:#cbd5e1;line-height:1.5;margin:0 0 6px 0">
-                <strong>What is happening:</strong> Server D starts <code>EchoServerTCP</code> in <code>LISTEN</code> state. Host A and Host B establish concurrent TCP sessions via RFC 793 three-way handshakes (<code>SYN → SYN-ACK → ACK</code>), transferring byte streams with sliding window buffers.
-              </p>
-              <div style="font-size:0.7rem;color:#94a3b8"><strong>Component Tested:</strong> <code>mysocket.py</code> &amp; <code>buffer.py</code> (TCP State Machine &amp; Buffers)</div>
-            </div>
-
-            <div style="background:#111726;border:1px solid rgba(236,72,153,0.3);border-radius:8px;padding:12px 14px">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-                <strong style="color:#f472b6;font-size:0.84rem">Scenario 5: Full-Stack Multi-Hop Internet Simulation</strong>
-                <span style="font-size:0.68rem;background:rgba(236,72,153,0.2);color:#f472b6;padding:2px 8px;border-radius:4px;font-weight:600">Layers 1–5 (End-to-End Suite)</span>
-              </div>
-              <p style="font-size:0.75rem;color:#cbd5e1;line-height:1.5;margin:0 0 6px 0">
-                <strong>What is happening:</strong> The culmination test. Unifies custom <code>switch.py</code> (L2), <code>dvrouter.py</code> (L3), and <code>mysocket.py</code> (L4) executing simultaneously across the entire multi-hop virtual topology with 100% data integrity.
-              </p>
-              <div style="font-size:0.7rem;color:#94a3b8"><strong>Component Tested:</strong> Full Custom Internet Stack (All Modules)</div>
-            </div>
-
-          </div>
         </div>
       </div>
     </div>
@@ -2183,57 +2395,146 @@ Welcome to my PC! feel free to poke around.
 
     <!-- Robot Window Container -->
     <div class="robot-container">
-      <!-- Toolbar Tabs -->
+      <!-- Toolbar Tabs (Flat top-level tabs, NO nested half-tabs) -->
       <div class="robot-tabs">
-        <button class="vm-tab-btn active" id="tab-btn-r-code" onclick="switchRobotTab('code')">
-          <i data-lucide="file-code" style="width:12px;height:12px"></i> 💻 Embedded C++ Firmware &amp; Architecture
+        <button class="vm-tab-btn active" id="tab-btn-r-overview" onclick="switchRobotTab('overview')">
+          <i data-lucide="book-open" style="width:12px;height:12px;color:#c084fc"></i> README &amp; Video
         </button>
-        <button class="vm-tab-btn" id="tab-btn-r-video" onclick="switchRobotTab('video')">
-          <i data-lucide="video" style="width:12px;height:12px"></i> 🎬 Demonstration Video
+        <button class="vm-tab-btn" id="tab-btn-r-ino" onclick="switchRobotTab('ino')">
+          <i data-lucide="file-code" style="width:12px;height:12px;color:#38bdf8"></i> robot_controller.ino
+        </button>
+        <button class="vm-tab-btn" id="tab-btn-r-pin" onclick="switchRobotTab('pin')">
+          <i data-lucide="file-code" style="width:12px;height:12px;color:#10b981"></i> pin_config.h
         </button>
       </div>
 
-      <!-- PANE 1: Embedded C++ Code Viewer (DEFAULT) -->
-      <div class="robot-pane active" id="robot-pane-code">
-        <div class="code-viewer-container">
-          <div class="code-tabs" id="robot-code-tabs-bar">
-            <div class="code-tab active" onclick="loadRobotCodeFile('robot_controller.ino', this)">
-              <i data-lucide="file-code" style="width:12px;height:12px"></i> robot_controller.ino
+      <!-- PANE 1: README Overview & Demonstration Video (DEFAULT) -->
+      <div class="robot-pane active" id="robot-pane-overview" style="padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:14px">
+        <!-- README Document (Exact project README) -->
+        <div style="background:#0e1526;border:1px solid rgba(168,85,247,0.35);border-radius:8px;padding:16px 18px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:10px;flex-wrap:wrap;gap:8px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <i data-lucide="book-open" style="width:18px;height:18px;color:#c084fc"></i>
+              <h3 style="margin:0;font-size:1rem;color:#f8fafc">Autonomous Breadboard Robot (Light Following &amp; Obstacle Avoidance)</h3>
             </div>
-            <div class="code-tab" onclick="loadRobotCodeFile('pin_config.h', this)">
-              <i data-lucide="file-code" style="width:12px;height:12px"></i> pin_config.h
-            </div>
-            <div class="code-tab" onclick="loadRobotCodeFile('README.md', this)">
-              <i data-lucide="book-open" style="width:12px;height:12px"></i> README.md
-            </div>
+            <span style="font-size:0.7rem;background:rgba(168,85,247,0.2);color:#c084fc;padding:2px 8px;border-radius:4px;font-weight:600">README.md</span>
           </div>
-          <pre class="code-content" id="robot-code-display"></pre>
-        </div>
-      </div>
 
-      <!-- PANE 2: Video & Project Overview -->
-      <div class="robot-pane" id="robot-pane-video" style="padding:16px;overflow-y:auto;gap:14px">
+          <div style="font-size:0.79rem;color:#cbd5e1;line-height:1.6;display:flex;flex-direction:column;gap:4px">
+            <div><strong>Author:</strong> Jacob Williams</div>
+            <div><strong>Hardware Platform:</strong> Arduino (ATmega328P), Breadboard Architecture, L298N H-Bridge Driver</div>
+            <div><strong>Demonstration Video:</strong> <code style="background:rgba(255,255,255,0.08);padding:1px 5px;border-radius:3px;color:#a7f3d0">robotProject.MOV</code> (Included below)</div>
+            <div><strong>Embedded Firmware:</strong> <code style="background:rgba(255,255,255,0.08);padding:1px 5px;border-radius:3px;color:#a7f3d0">robot_controller.ino</code>, <code style="background:rgba(255,255,255,0.08);padding:1px 5px;border-radius:3px;color:#a7f3d0">pin_config.h</code></div>
+          </div>
+
+          <div style="height:1px;background:rgba(255,255,255,0.08);margin:2px 0"></div>
+
+          <div>
+            <h4 style="margin:0 0 6px 0;font-size:0.86rem;color:#38bdf8;display:flex;align-items:center;gap:6px">
+              <i data-lucide="cpu" style="width:14px;height:14px"></i> Architecture: Perception &rarr; Planning &rarr; Action
+            </h4>
+            <ol style="margin:0;padding-left:20px;font-size:0.77rem;color:#cbd5e1;line-height:1.6">
+              <li style="margin-bottom:4px"><strong>Perception:</strong> reads each button/pin and sets sensed-state variables (e.g., <code style="background:rgba(255,255,255,0.08);padding:1px 4px;border-radius:3px;color:#a7f3d0">SensedLightLeft</code>, <code style="background:rgba(255,255,255,0.08);padding:1px 4px;border-radius:3px;color:#a7f3d0">SensedLightUp</code>) on/off.</li>
+              <li style="margin-bottom:4px"><strong>Planning:</strong> finite state machines decide behavior based on sensed state. Each state has explicit transition-in/out conditions &mdash; leaving a state requires a different input pattern than the one that entered it. Separate FSMs handle collision detection, steering, servo movement, and speed control.</li>
+              <li style="margin-bottom:4px"><strong>Action:</strong> a switch statement (or small FSM) turns LEDs/motors/servo on or off based on the planning state.</li>
+            </ol>
+          </div>
+
+          <div style="height:1px;background:rgba(255,255,255,0.08);margin:2px 0"></div>
+
+          <div>
+            <h4 style="margin:0 0 6px 0;font-size:0.86rem;color:#fbbf24;display:flex;align-items:center;gap:6px">
+              <i data-lucide="folder" style="width:14px;height:14px"></i> Included Project Files
+            </h4>
+            <ol style="margin:0;padding-left:20px;font-size:0.77rem;color:#cbd5e1;line-height:1.6">
+              <li style="margin-bottom:4px"><strong><code style="background:rgba(255,255,255,0.08);padding:1px 4px;border-radius:3px;color:#a7f3d0">robotProject.MOV</code></strong>: Demonstration video showing the breadboard robot in active operation (displayed below).</li>
+              <li style="margin-bottom:4px"><strong><code style="background:rgba(255,255,255,0.08);padding:1px 4px;border-radius:3px;color:#a7f3d0">robot_controller.ino</code></strong>: Embedded C++ firmware running the control loop and state machine (view via tab above).</li>
+              <li style="margin-bottom:4px"><strong><code style="background:rgba(255,255,255,0.08);padding:1px 4px;border-radius:3px;color:#a7f3d0">pin_config.h</code></strong>: Hardware pin mapping and calibration constants (view via tab above).</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Demonstration Video (Positioned below the README) -->
         <div style="display:flex;justify-content:center;background:#000;border-radius:8px;padding:8px;border:1px solid rgba(168,85,247,0.3);box-shadow:0 8px 24px rgba(0,0,0,0.6)">
-          <video id="robot-video-player" controls autoplay muted loop playsinline style="max-height:360px;max-width:100%;border-radius:6px;background:#000">
+          <video id="robot-video-player" controls loop playsinline style="max-height:360px;max-width:100%;border-radius:6px;background:#000;display:block">
             <source src="media/Breadboard-Robot/robotProject.MOV" type="video/mp4">
             <source src="media/robotProject.MOV" type="video/quicktime">
             <source src="media/robotProject.MOV" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
+      </div>
 
-        <div style="background:#0e1526;border:1px solid rgba(168,85,247,0.35);border-radius:8px;padding:14px">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;flex-wrap:wrap">
-            <div style="display:flex;align-items:center;gap:8px">
-              <i data-lucide="award" style="width:20px;height:20px;color:#c084fc"></i>
-              <h3 style="margin:0;font-size:0.96rem;color:#f8fafc">Resume Project: Breadboard Robot (Embedded Systems &amp; Hardware)</h3>
-            </div>
-            <span style="font-size:0.7rem;background:rgba(168,85,247,0.2);color:#c084fc;padding:2px 8px;border-radius:4px;font-weight:600">September 2025 – August 2025</span>
-          </div>
-          <div style="font-size:0.77rem;color:#94a3b8;line-height:1.6">
-            • <strong>Embedded C++ Firmware:</strong> Programmed embedded systems software in C++ on Arduino hardware, reading from multiple pin configurations (IR line/edge detection, HC-SR04 ultrasonic distance) and driving dual DC motors via L298N H-Bridge PWM.<br>
-            • <strong>Inductors &amp; Capacitors Circuit Integration:</strong> Incorporated a <strong>100µF electrolytic buffer capacitor</strong> across the 5V power rail to eliminate logic brownout resets caused by motor startup inrush current, <strong>0.1µF ceramic decoupling capacitors</strong> on motor terminals for RF brush sparking noise suppression, and <strong>1N4007 flyback diodes</strong> to clamp back-EMF inductive spikes.<br>
-            • <strong>Perception-Planning-Action Architecture:</strong> Multi-phase finite state machine structure processing pull-down button inputs, obstacle detection thresholds, and real-time motor actuation.
+      <!-- PANE 2: robot_controller.ino (Full Size Direct Tab) -->
+      <div class="robot-pane" id="robot-pane-ino" style="flex:1;height:100%;overflow:hidden;display:none;flex-direction:column">
+        <pre class="code-content" id="robot-code-display-ino" style="flex:1;height:100%;margin:0;padding:12px 0;overflow-y:auto;overflow-x:hidden"></pre>
+      </div>
+
+      <!-- PANE 3: pin_config.h (Full Size Direct Tab) -->
+      <div class="robot-pane" id="robot-pane-pin" style="flex:1;height:100%;overflow:hidden;display:none;flex-direction:column">
+        <pre class="code-content" id="robot-code-display-pin" style="flex:1;height:100%;margin:0;padding:12px 0;overflow-y:auto;overflow-x:hidden"></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- WINDOW 8: DRONE PHOTOGRAMMETRY & ORTHOPHOTO (POWERPOINT) -->
+  <!-- ======================================================== -->
+  <div class="win minimized" id="drone-win" style="top:18px;left:calc(50% - 470px);width:min(940px, 96vw);height:min(580px, calc(100vh - var(--taskbar-h) - 36px));max-height:calc(100vh - var(--taskbar-h) - 20px)">
+    <!-- 8 Resize Handles -->
+    <div class="resize-handle resize-n"  data-win="drone-win" data-dir="n"></div>
+    <div class="resize-handle resize-s"  data-win="drone-win" data-dir="s"></div>
+    <div class="resize-handle resize-w"  data-win="drone-win" data-dir="w"></div>
+    <div class="resize-handle resize-e"  data-win="drone-win" data-dir="e"></div>
+    <div class="resize-handle resize-nw" data-win="drone-win" data-dir="nw"></div>
+    <div class="resize-handle resize-ne" data-win="drone-win" data-dir="ne"></div>
+    <div class="resize-handle resize-sw" data-win="drone-win" data-dir="sw"></div>
+    <div class="resize-handle resize-se" data-win="drone-win" data-dir="se"></div>
+
+    <div class="titlebar" data-win="drone-win" style="--win-accent:#f97316">
+      <div class="titlebar-left">
+        <i data-lucide="presentation" style="width:14px;height:14px;color:#f97316"></i>
+        <span>Jacob Williams Photogrammetry.pptx — Microsoft PowerPoint</span>
+      </div>
+      <div class="wbtns">
+        <div class="wbtn" onclick="minimize('drone-win')"><i data-lucide="minus" style="width:12px;height:12px"></i></div>
+        <div class="wbtn" onclick="toggleMax('drone-win')"><i data-lucide="square" style="width:10px;height:10px"></i></div>
+        <div class="wbtn close" onclick="close_('drone-win')"><i data-lucide="x" style="width:12px;height:12px"></i></div>
+      </div>
+    </div>
+
+    <!-- Drone Container -->
+    <div class="drone-container">
+      <!-- PowerPoint Ribbon / Toolbar -->
+      <div class="drone-ribbon">
+        <div class="drone-nav-grp">
+          <button class="vm-tab-btn" onclick="prevDroneSlide()" title="Previous Slide">
+            <i data-lucide="chevron-up" style="width:14px;height:14px"></i> Prev
+          </button>
+          <span class="drone-counter" id="drone-slide-counter">Slide 1 of 5</span>
+          <button class="vm-tab-btn" onclick="nextDroneSlide()" title="Next Slide">
+            Next <i data-lucide="chevron-down" style="width:14px;height:14px"></i>
+          </button>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:8px;font-size:0.72rem;color:#94a3b8">
+          <i data-lucide="presentation" style="width:13px;height:13px;color:#f97316"></i>
+          <span>Slide Show</span>
+        </div>
+      </div>
+
+      <!-- Drone Body -->
+      <div class="drone-body">
+        <!-- Left Filmstrip -->
+        <div class="drone-filmstrip" id="drone-filmstrip">
+          <!-- 5 Thumbnails populated by JS -->
+        </div>
+
+        <!-- Main Slide Stage -->
+        <div class="drone-stage" id="drone-stage" tabindex="0">
+          <!-- Dynamic Active Slide Card -->
+          <div class="drone-slide-card" id="drone-slide-card">
+            <!-- Populated by JS -->
           </div>
         </div>
       </div>
@@ -2279,9 +2580,6 @@ Welcome to my PC! feel free to poke around.
     </div>
     <div class="tb-btn" id="tb-ex" onclick="toggle('ex-win')" title="File Explorer — Browse projects">
       <i data-lucide="folder" style="width:20px;height:20px;color:#fbbf24"></i>
-    </div>
-    <div class="tb-btn" id="tb-bin" onclick="toggle('bin-win')" title="Recycle Bin">
-      <i data-lucide="trash-2" style="width:20px;height:20px;color:#94a3b8"></i>
     </div>
   </div>
 
@@ -2547,6 +2845,8 @@ function openExplorer(view) {
   if (sideNet) sideNet.classList.toggle('active', view === 'networking');
   const sideRobot = document.getElementById('side-robot');
   if (sideRobot) sideRobot.classList.toggle('active', view === 'robot');
+  const sideDrone = document.getElementById('side-drone');
+  if (sideDrone) sideDrone.classList.toggle('active', view === 'drone');
 
   if (view === 'root') {
     addr.textContent = 'This PC';
@@ -2564,6 +2864,12 @@ function openExplorer(view) {
         </div>
         <div>Breadboard Robot</div>
       </div>
+      <div class="ex-item" onclick="openExplorer('drone')" ondblclick="openExplorer('drone')">
+        <div class="ex-thumb" style="display:flex;align-items:center;justify-content:center;background:#2d1808">
+          <i data-lucide="presentation" style="width:42px;height:42px;color:#f97316"></i>
+        </div>
+        <div>Drone Photogrammetry</div>
+      </div>
       <div class="ex-item" onclick="openExplorer('photos')" ondblclick="openExplorer('photos')">
         <div class="ex-thumb" style="display:flex;align-items:center;justify-content:center;background:#1a1030">
           <i data-lucide="images" style="width:42px;height:42px;color:#ec4899"></i>
@@ -2576,14 +2882,32 @@ function openExplorer(view) {
         </div>
         <div>Resume.pdf</div>
       </div>`;
+  } else if (view === 'drone') {
+    addr.textContent = 'This PC › Drone Photogrammetry';
+    title.textContent = 'File Explorer — Drone Photogrammetry & Orthophoto Mapping';
+    const droneFiles = [
+      { name: 'Jacob_Williams_Photogrammetry.pptx', icon: 'presentation', color: '#f97316', action: "show('drone-win');switchDroneSlide(0)" },
+      { name: 'Cesium_Ion_3D_Story (Slide 1 - 3D Earth)', icon: 'box', color: '#a855f7', action: "show('drone-win');switchDroneSlide(0)" },
+      { name: 'ArcGIS_Photogrammetry_Renders (Slide 2 - DEM & Overlap)', icon: 'map', color: '#38bdf8', action: "show('drone-win');switchDroneSlide(1)" },
+      { name: 'Benchmark_ArcGIS_vs_Metashape.csv (Slide 3)', icon: 'bar-chart-3', color: '#10b981', action: "show('drone-win');switchDroneSlide(2)" },
+      { name: 'Key_Technical_Learnings.txt (Slide 4)', icon: 'file-text', color: '#fbbf24', action: "show('drone-win');switchDroneSlide(3)" },
+      { name: 'sizzleReel.mp4 (Slide 5 - 42s Flight Reel)', icon: 'video', color: '#ec4899', action: "show('drone-win');switchDroneSlide(4)" }
+    ];
+    files.innerHTML = droneFiles.map(f => `
+      <div class="ex-item" onclick="${f.action}" ondblclick="${f.action}">
+        <div class="ex-thumb" style="display:flex;align-items:center;justify-content:center;background:#1e140d">
+          <i data-lucide="${f.icon}" style="width:40px;height:40px;color:${f.color}"></i>
+        </div>
+        <div style="font-size:0.7rem;overflow:hidden;text-overflow:ellipsis;width:100%;white-space:nowrap" title="${f.name}">${f.name}</div>
+      </div>`).join('');
   } else if (view === 'robot') {
     addr.textContent = 'This PC › Breadboard Robot';
     title.textContent = 'File Explorer — Breadboard Robot (Embedded C++)';
     const robotFiles = [
-      { name: 'robotProject.MOV (Video Demo)', icon: 'video', color: '#a855f7', action: "openRobotApp('video')" },
-      { name: 'robot_controller.ino (C++ Firmware)', icon: 'file-code', color: '#38bdf8', action: "openRobotApp('code');loadRobotCodeFile('robot_controller.ino')" },
-      { name: 'pin_config.h (Pin Mapping)', icon: 'file-code', color: '#10b981', action: "openRobotApp('code');loadRobotCodeFile('pin_config.h')" },
-      { name: 'README.md (Circuit & Architecture Spec)', icon: 'book-open', color: '#fbbf24', action: "openRobotApp('code');loadRobotCodeFile('README.md')" }
+      { name: 'README.md (Project Overview & Video)', icon: 'book-open', color: '#fbbf24', action: "openRobotApp('overview')" },
+      { name: 'robotProject.MOV (Demonstration Video)', icon: 'video', color: '#a855f7', action: "openRobotApp('overview')" },
+      { name: 'robot_controller.ino (C++ Firmware)', icon: 'file-code', color: '#38bdf8', action: "openRobotApp('ino')" },
+      { name: 'pin_config.h (Pin Mapping)', icon: 'file-code', color: '#10b981', action: "openRobotApp('pin')" }
     ];
     files.innerHTML = robotFiles.map(f => `
       <div class="ex-item" onclick="${f.action}" ondblclick="${f.action}">
@@ -2623,7 +2947,7 @@ function openExplorer(view) {
     addr.textContent = 'This PC › Computer Networking › 13-lab-full-stack-network';
     title.textContent = 'File Explorer — Computer Virtual Networking Lab';
     const netFiles = [
-      { name: 'README.md (Architecture Spec)', icon: 'book-open', color: '#fbbf24', action: "openCodeViewer('README.md')" },
+      { name: 'README.md (Overview & Scenarios)', icon: 'book-open', color: '#fbbf24', action: "openCodeViewer('README.md')" },
       { name: 'mysocket.py (TCP Stack)', icon: 'file-code', color: '#38bdf8', action: "openCodeViewer('mysocket.py')" },
       { name: 'dvrouter.py (Bellman-Ford)', icon: 'file-code', color: '#f59e0b', action: "openCodeViewer('dvrouter.py')" },
       { name: 'forwarding_table.py (CIDR LPM)', icon: 'file-code', color: '#10b981', action: "openCodeViewer('forwarding_table.py')" },
@@ -2659,7 +2983,8 @@ const tbMap = {
   'pdf-win': 'tb-pdf',
   'vm-win': 'tb-vm',
   'robot-win': 'tb-robot',
-  'notepad-win': 'tb-notepad'
+  'notepad-win': 'tb-notepad',
+  'drone-win': 'tb-drone'
 };
 
 function focusWin(id) {
@@ -2684,6 +3009,17 @@ function show(id) {
     lucide.createIcons();
   } else if (id === 'robot-win') {
     lucide.createIcons();
+  } else if (id === 'drone-win') {
+    if (!droneInitialized) initDroneViewer();
+    const taskbarH = 48;
+    const availH = window.innerHeight - taskbarH;
+    const rect = w.getBoundingClientRect();
+    if (rect.bottom > availH || rect.top < 10) {
+      const targetH = Math.min(580, availH - 30);
+      w.style.height = targetH + 'px';
+      w.style.top = Math.max(12, Math.floor((availH - targetH) / 2)) + 'px';
+    }
+    lucide.createIcons();
   }
   w.classList.remove('minimized');
   focusWin(id);
@@ -2696,6 +3032,13 @@ function minimize(id) {
   w.classList.remove('focused');
   const tb = document.getElementById(tbMap[id]);
   if (tb) tb.classList.remove('active');
+  if (id === 'robot-win') {
+    const v = document.getElementById('robot-video-player');
+    if (v && !v.paused) v.pause();
+  } else if (id === 'drone-win') {
+    const v = document.getElementById('drone-video-player');
+    if (v && !v.paused) v.pause();
+  }
 }
 
 function close_(id) {
@@ -2726,6 +3069,28 @@ document.querySelectorAll('.win').forEach(w => {
   });
 });
 
+// Automatically minimize focused window when clicking off onto the desktop surface
+window.addEventListener('pointerdown', (e) => {
+  if (e.button !== 0) return; // Only primary left-click
+  if (e.target.closest('.win')) return;
+  if (e.target.closest('#taskbar')) return;
+  if (e.target.closest('.flyout')) return;
+  if (e.target.closest('#ctx-menu')) return;
+  if (e.target.closest('.dicon')) return;
+
+  const unminimized = Array.from(document.querySelectorAll('.win:not(.minimized)'))
+    .sort((a, b) => (parseInt(b.style.zIndex || 0) - parseInt(a.style.zIndex || 0)));
+
+  if (unminimized.length > 0) {
+    const topWin = unminimized[0];
+    minimize(topWin.id);
+
+    if (unminimized.length > 1) {
+      focusWin(unminimized[1].id);
+    }
+  }
+});
+
 // ================================================================
 // BULLETPROOF WINDOW & TAB DRAGGING (POINTER CAPTURE)
 // ================================================================
@@ -2751,8 +3116,9 @@ document.querySelectorAll('.titlebar').forEach(bar => {
     function onMove(ev) {
       const dx = ev.clientX - startX;
       const dy = ev.clientY - startY;
+      const taskbarH = 48;
       const maxX = window.innerWidth  - 80;
-      const maxY = window.innerHeight - 40;
+      const maxY = Math.max(0, window.innerHeight - taskbarH - 40);
       win.style.left = Math.max(0, Math.min(maxX, origLeft + dx)) + 'px';
       win.style.top  = Math.max(0, Math.min(maxY, origTop  + dy)) + 'px';
     }
@@ -3386,6 +3752,14 @@ const SEARCHABLE_ITEMS = [
     color: '#a855f7',
     keywords: ['robot', 'breadboard', 'arduino', 'c++', 'cpp', 'firmware', 'embedded', 'hardware', 'pin', 'controller', 'sensors', 'motor', 'circuit', 'ino'],
     action: () => { openRobotApp(); closeStart(); }
+  },
+  {
+    title: 'Drone Orthophoto & Photogrammetry (.pptx)',
+    desc: 'Aerial Drone Survey, 3D Mesh & Landscape Orthophoto Mapping',
+    icon: 'presentation',
+    color: '#f97316',
+    keywords: ['drone', 'photogrammetry', 'ortho', 'orthophoto', 'powerpoint', 'pptx', 'presentation', 'landscape', 'cesium', 'metashape', 'arcgis', 'survey', 'aerial', 'mapping', 'wingtra', 'quimby', 'point cloud', 'tie points', 'uav', 'dronedeploy', 'jacob williams photogrammetry'],
+    action: () => { show('drone-win'); closeStart(); }
   },
   {
     title: 'Resume.pdf',
@@ -4404,8 +4778,12 @@ function renderHighlightedCode(filename, code) {
 
 function openCodeViewer(filename) {
   show('vm-win');
-  switchVmTab('code');
-  loadCodeFile(filename);
+  if (filename === 'README.md') {
+    switchVmTab('readme');
+  } else {
+    switchVmTab('code');
+    loadCodeFile(filename);
+  }
 }
 
 function loadCodeFile(filename, el) {
@@ -4447,40 +4825,69 @@ function switchVmTab(tab) {
   lucide.createIcons();
 }
 
-function openRobotApp(tab = 'code') {
+function openRobotApp(tab = 'overview') {
   show('robot-win');
   switchRobotTab(tab);
+  const robotVid = document.getElementById('robot-video-player');
+  if (robotVid) {
+    robotVid.pause();
+    robotVid.currentTime = 0;
+  }
 }
 
 function switchRobotTab(tab) {
-  document.querySelectorAll('.robot-pane').forEach(p => p.classList.remove('active'));
+  if (tab === 'video') tab = 'overview';
+  if (tab === 'code') tab = 'ino';
+
+  document.querySelectorAll('.robot-pane').forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
   document.querySelectorAll('.robot-tabs .vm-tab-btn').forEach(b => b.classList.remove('active'));
+
   const pane = document.getElementById(`robot-pane-${tab}`);
   const btn = document.getElementById(`tab-btn-r-${tab}`);
-  if (pane) pane.classList.add('active');
-  if (btn) btn.classList.add('active');
-  if (tab === 'code') {
-    const activeTab = document.querySelector('#robot-code-tabs-bar .code-tab.active');
-    const filename = activeTab ? activeTab.textContent.trim() : 'robot_controller.ino';
-    loadRobotCodeFile(filename);
+  if (pane) {
+    pane.classList.add('active');
+    pane.style.display = 'flex';
   }
+  if (btn) btn.classList.add('active');
+
+  const robotVid = document.getElementById('robot-video-player');
+  if (robotVid && !robotVid.paused) {
+    robotVid.pause();
+  }
+
+  // Ensure code content is loaded into pre tag
+  if (tab === 'ino') {
+    const dispIno = document.getElementById('robot-code-display-ino');
+    if (dispIno && (!dispIno.innerHTML || dispIno.innerHTML.trim() === '')) {
+      const raw = ROBOT_CODE_FILES['robot_controller.ino'] || '// robot_controller.ino';
+      dispIno.innerHTML = renderHighlightedCode('robot_controller.ino', raw);
+    }
+  } else if (tab === 'pin') {
+    const dispPin = document.getElementById('robot-code-display-pin');
+    if (dispPin && (!dispPin.innerHTML || dispPin.innerHTML.trim() === '')) {
+      const raw = ROBOT_CODE_FILES['pin_config.h'] || '// pin_config.h';
+      dispPin.innerHTML = renderHighlightedCode('pin_config.h', raw);
+    }
+  }
+
   lucide.createIcons();
 }
 
 function loadRobotCodeFile(filename, el) {
-  if (el) {
-    document.querySelectorAll('#robot-code-tabs-bar .code-tab').forEach(t => t.classList.remove('active'));
-    el.classList.add('active');
-  } else {
-    document.querySelectorAll('#robot-code-tabs-bar .code-tab').forEach(t => {
-      if (t.textContent.trim().includes(filename)) t.classList.add('active');
-      else t.classList.remove('active');
-    });
+  const inoDisplay = document.getElementById('robot-code-display-ino');
+  if (inoDisplay && ROBOT_CODE_FILES['robot_controller.ino']) {
+    inoDisplay.innerHTML = renderHighlightedCode('robot_controller.ino', ROBOT_CODE_FILES['robot_controller.ino']);
   }
-  const display = document.getElementById('robot-code-display');
-  if (display) {
-    const raw = ROBOT_CODE_FILES[filename] || `// File: ${filename}\n// Source code loaded.`;
-    display.innerHTML = renderHighlightedCode(filename, raw);
+  const pinDisplay = document.getElementById('robot-code-display-pin');
+  if (pinDisplay && ROBOT_CODE_FILES['pin_config.h']) {
+    pinDisplay.innerHTML = renderHighlightedCode('pin_config.h', ROBOT_CODE_FILES['pin_config.h']);
+  }
+  if (filename) {
+    if (filename.includes('pin')) switchRobotTab('pin');
+    else if (filename.includes('ino') || filename.includes('robot_controller')) switchRobotTab('ino');
   }
 }
 
@@ -4538,16 +4945,11 @@ function clearAllNodeBadges() {
 }
 
 function openScenarioGuide() {
-  const overlay = document.getElementById('scen-guide-overlay');
-  if (overlay) {
-    overlay.style.display = 'flex';
-    lucide.createIcons();
-  }
+  switchVmTab('readme');
 }
 
 function closeScenarioGuide() {
-  const overlay = document.getElementById('scen-guide-overlay');
-  if (overlay) overlay.style.display = 'none';
+  switchVmTab('sim');
 }
 
 function inspectNode(nodeId) {
@@ -4955,6 +5357,506 @@ window.addEventListener('pointerdown', (e) => {
 
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeCtxMenu();
+});
+
+// ================================================================
+// DRONE PHOTOGRAMMETRY & POWERPOINT VIEWER ENGINE
+// ================================================================
+let droneInitialized = false;
+let currentDroneSlide = 0;
+
+const DRONE_SLIDES = [
+  {
+    num: 1,
+    title: 'Cesium Ion 3D Survey',
+    subtitle: 'Interactive 3D Photogrammetry & Elevation',
+    thumbImg: 'media/Drone-Photogrammetry/image9.png',
+    miniPreview: () => `
+      <div style="width:100%;height:100%;display:flex;flex-direction:column;background:#0b1120;padding:4px 5px;box-sizing:border-box;gap:3px;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(168,85,247,0.4);padding-bottom:2px">
+          <div style="display:flex;align-items:center;gap:3px">
+            <span style="width:4px;height:4px;border-radius:50%;background:#a855f7"></span>
+            <span style="font-size:0.52rem;font-weight:700;color:#f8fafc;line-height:1">3D Cesium Ion</span>
+          </div>
+          <span style="font-size:0.42rem;background:rgba(168,85,247,0.25);color:#c084fc;padding:0 3px;border-radius:2px;font-weight:700">1</span>
+        </div>
+        <div style="background:#111827;border-left:2px solid #a855f7;padding:2px 4px;border-radius:2px">
+          <div style="font-size:0.42rem;color:#c084fc;font-weight:700;line-height:1">SURVEY DATA</div>
+          <div style="font-size:0.36rem;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2">Fixed-wing · ArcGIS · Cesium</div>
+        </div>
+        <div style="flex:1;background:#000;border:1px solid rgba(168,85,247,0.35);border-radius:2px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center">
+          <img src="media/Drone-Photogrammetry/image9.png" style="width:100%;height:100%;object-fit:cover" alt="Cesium 3D">
+          <div style="position:absolute;bottom:2px;left:3px;background:rgba(15,23,42,0.88);color:#c084fc;font-size:0.38rem;padding:1px 4px;border-radius:2px;border:1px solid rgba(168,85,247,0.3);font-weight:700">
+            3D MESH
+          </div>
+        </div>
+      </div>`,
+    render: () => `
+      <div class="drone-slide-header">
+        <div>
+          <h2 style="margin:0;font-size:1.15rem;color:#f8fafc;display:flex;align-items:center;gap:8px">
+            <i data-lucide="box" style="width:20px;height:20px;color:#a855f7"></i> Survey Data &amp; Cesium Ion 3D Model
+          </h2>
+          <div style="font-size:0.75rem;color:#94a3b8;margin-top:2px">Fixed-wing drone photogrammetry &bull; Interactive 3D earth model (Full 360&deg; Orbit)</div>
+        </div>
+        <span style="font-size:0.7rem;background:rgba(168,85,247,0.2);color:#c084fc;padding:3px 10px;border-radius:4px;font-weight:600">Slide 1 / 5</span>
+      </div>
+      <div class="drone-slide-content" style="gap:10px">
+        <div style="background:#111827;border:1px solid rgba(168,85,247,0.35);border-radius:8px;padding:10px 14px;font-size:0.81rem;color:#f1f5f9;line-height:1.55;text-align:left;width:100%;box-sizing:border-box">
+          <div style="font-size:0.73rem;font-weight:700;color:#c084fc;text-transform:uppercase;letter-spacing:0.05em;display:flex;align-items:center;gap:6px;margin-bottom:3px">
+            <i data-lucide="target" style="width:13px;height:13px;color:#c084fc"></i> Project Objective &amp; Survey Overview
+          </div>
+          <div>
+            Used fixed-wing aircraft drones to survey a geographical region to harvest survey data. Constructed multiple orthophotos, used ArcGIS to stitch all of the photos together, and rendered them in Cesium Ion.
+          </div>
+        </div>
+
+        <div style="width:100%;height:310px;border-radius:8px;border:1px solid rgba(168,85,247,0.4);background:#000;position:relative;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.7)">
+          <iframe src="https://ion.cesium.com/stories/viewer/?id=c055fd16-d918-404d-9a4c-b70094db0d65" 
+                  style="width:100%;height:100%;border:none;display:block" 
+                  allow="camera; geolocation; fullscreen" 
+                  allowfullscreen>
+          </iframe>
+        </div>
+
+        <div style="background:#111827;border-radius:6px;padding:8px 14px;border:1px solid var(--border);font-size:0.75rem;color:#cbd5e1;line-height:1.5;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <div>
+            &bull; <strong>3D Orbit Controls:</strong> Left-click + drag to orbit in 360&deg; &bull; Right-click + drag to zoom &bull; Middle-click / Wheel to tilt.
+          </div>
+          <span style="font-size:0.68rem;background:#1e1430;color:#c084fc;padding:2px 8px;border-radius:4px;border:1px solid rgba(168,85,247,0.3)">Interactive 3D Viewport</span>
+        </div>
+      </div>`
+  },
+  {
+    num: 2,
+    title: 'ArcGIS Renders',
+    subtitle: 'Flight Overlap & Elevation Models',
+    thumbImg: 'media/Drone-Photogrammetry/image4.png',
+    miniPreview: () => `
+      <div style="width:100%;height:100%;display:flex;flex-direction:column;background:#0b1120;padding:4px 5px;box-sizing:border-box;gap:3px;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(56,189,248,0.4);padding-bottom:2px">
+          <div style="display:flex;align-items:center;gap:3px">
+            <span style="width:4px;height:4px;border-radius:50%;background:#38bdf8"></span>
+            <span style="font-size:0.52rem;font-weight:700;color:#f8fafc;line-height:1">ArcGIS Renders</span>
+          </div>
+          <span style="font-size:0.42rem;background:rgba(56,189,248,0.25);color:#7dd3fc;padding:0 3px;border-radius:2px;font-weight:700">2</span>
+        </div>
+        <div style="flex:1;background:#000;border:1px solid rgba(56,189,248,0.35);border-radius:2px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center">
+          <img src="media/Drone-Photogrammetry/image4.png" style="width:100%;height:100%;object-fit:cover" alt="ArcGIS Renders">
+          <div style="position:absolute;bottom:2px;left:3px;background:rgba(15,23,42,0.88);color:#38bdf8;font-size:0.38rem;padding:1px 4px;border-radius:2px;border:1px solid rgba(56,189,248,0.3);font-weight:700">
+            FLIGHT GRID
+          </div>
+        </div>
+      </div>`,
+    render: () => `
+      <div class="drone-slide-header">
+        <div>
+          <h2 style="margin:0;font-size:1.15rem;color:#f8fafc;display:flex;align-items:center;gap:8px">
+            <i data-lucide="map" style="width:20px;height:20px;color:#38bdf8"></i> ArcGIS Development &amp; Photogrammetry Renders
+          </h2>
+          <div style="font-size:0.75rem;color:#94a3b8;margin-top:2px">Flight coverage, digital elevation models &amp; orthomosaic reconstruction in ArcGIS Pro</div>
+        </div>
+        <span style="font-size:0.7rem;background:rgba(56,189,248,0.2);color:#7dd3fc;padding:3px 10px;border-radius:4px;font-weight:600">Slide 2 / 5</span>
+      </div>
+      <div class="drone-slide-content" style="gap:10px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:10px;width:100%">
+          <!-- Card 1: Flight Path & Camera Overlap -->
+          <div style="background:#111827;border-radius:8px;padding:10px;border:1px solid rgba(56,189,248,0.3);display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <strong style="color:#38bdf8;font-size:0.77rem;display:flex;align-items:center;gap:5px">
+                <i data-lucide="crosshair" style="width:13px;height:13px"></i> Flight Path &amp; Overlap
+              </strong>
+              <span style="font-size:0.65rem;color:#94a3b8">ArcGIS Pro</span>
+            </div>
+            <div style="width:100%;height:135px;border-radius:6px;overflow:hidden;background:#000;border:1px solid rgba(255,255,255,0.08)">
+              <img src="media/Drone-Photogrammetry/image4.png" style="width:100%;height:100%;object-fit:cover" alt="Flight Path & Overlap Grid">
+            </div>
+            <p style="margin:0;font-size:0.72rem;color:#cbd5e1;line-height:1.4">
+              Fixed-wing flight transects with 80%+ camera frame overlap and waypoint capture locations plotted over topographic contours.
+            </p>
+          </div>
+
+          <!-- Card 2: Digital Elevation Model (DEM) -->
+          <div style="background:#111827;border-radius:8px;padding:10px;border:1px solid rgba(249,115,22,0.3);display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <strong style="color:#f97316;font-size:0.77rem;display:flex;align-items:center;gap:5px">
+                <i data-lucide="mountain" style="width:13px;height:13px"></i> Elevation Model (DEM)
+              </strong>
+              <span style="font-size:0.65rem;color:#94a3b8">10.1 cm/pix</span>
+            </div>
+            <div style="width:100%;height:135px;border-radius:6px;overflow:hidden;background:#000;border:1px solid rgba(255,255,255,0.08)">
+              <img src="media/Drone-Photogrammetry/image1.png" style="width:100%;height:100%;object-fit:contain;background:#060a12" alt="Digital Elevation Model">
+            </div>
+            <p style="margin:0;font-size:0.72rem;color:#cbd5e1;line-height:1.4">
+              Hypsometric surface elevation model spanning 1.37 km to 1.46 km altitude with color-ramped topographic relief.
+            </p>
+          </div>
+
+          <!-- Card 3: ArcGIS Pro Block Adjustment Log Screenshot -->
+          <div style="background:#111827;border-radius:8px;padding:10px;border:1px solid rgba(168,85,247,0.3);display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <strong style="color:#c084fc;font-size:0.77rem;display:flex;align-items:center;gap:5px">
+                <i data-lucide="terminal" style="width:13px;height:13px"></i> Block Adjustment Log
+              </strong>
+              <span style="font-size:0.65rem;color:#94a3b8">ArcGIS Pro Engine</span>
+            </div>
+            <div style="width:100%;height:135px;border-radius:6px;overflow:hidden;background:#fff;border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center">
+              <img src="media/Drone-Photogrammetry/arcgis_log_stack.png" style="width:100%;height:100%;object-fit:contain;background:#fff;cursor:pointer" onclick="window.open('media/Drone-Photogrammetry/arcgis_log_full.png')" title="Click to view full log screenshot" alt="ArcGIS Pro Block Adjustment Log">
+            </div>
+            <p style="margin:0;font-size:0.72rem;color:#cbd5e1;line-height:1.4">
+              <strong>ArcGIS Pro Pipeline:</strong> Geotags &rarr; camera block adjustment &rarr; dense tie-point triangulation (6.2M points) &rarr; calibrated DEM raster surface.
+            </p>
+          </div>
+        </div>
+      </div>`
+  },
+  {
+    num: 3,
+    title: 'Benchmarks',
+    subtitle: 'ArcGIS Pro vs. Agisoft Metashape',
+    thumbImg: 'media/Drone-Photogrammetry/image5.png',
+    miniPreview: () => `
+      <div style="width:100%;height:100%;display:flex;flex-direction:column;background:#0b1120;padding:4px 5px;box-sizing:border-box;gap:3px;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(16,185,129,0.4);padding-bottom:2px">
+          <div style="display:flex;align-items:center;gap:3px">
+            <span style="width:4px;height:4px;border-radius:50%;background:#10b981"></span>
+            <span style="font-size:0.52rem;font-weight:700;color:#f8fafc;line-height:1">Benchmarks</span>
+          </div>
+          <span style="font-size:0.42rem;background:rgba(16,185,129,0.25);color:#6ee7b7;padding:0 3px;border-radius:2px;font-weight:700">3</span>
+        </div>
+        <div style="flex:1;background:#0e1526;border-radius:2px;border:1px solid rgba(255,255,255,0.08);padding:2px 3px;display:flex;flex-direction:column;gap:2px;justify-content:center">
+          <div style="display:flex;justify-content:space-between;font-size:0.42rem;font-weight:700;padding-bottom:1px;border-bottom:1px solid rgba(255,255,255,0.08)">
+            <span style="color:#94a3b8">Metric</span>
+            <span style="color:#38bdf8">ArcGIS</span>
+            <span style="color:#a855f7">Metashape</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.38rem">
+            <span style="color:#cbd5e1">Runtime</span>
+            <span style="color:#ef4444">4h 03m</span>
+            <span style="color:#22c55e;font-weight:700">47m (5.1x)</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.38rem">
+            <span style="color:#cbd5e1">Tie Points</span>
+            <span style="color:#94a3b8">6.2M</span>
+            <span style="color:#22c55e;font-weight:700">7.8M</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.38rem">
+            <span style="color:#cbd5e1">Headache</span>
+            <span style="color:#ef4444">5/5</span>
+            <span style="color:#22c55e">2/5</span>
+          </div>
+        </div>
+      </div>`,
+    render: () => `
+      <div class="drone-slide-header">
+        <div>
+          <h2 style="margin:0;font-size:1.15rem;color:#f8fafc;display:flex;align-items:center;gap:8px">
+            <i data-lucide="bar-chart-2" style="width:20px;height:20px;color:#10b981"></i> Comparison &amp; Benchmarks
+          </h2>
+          <div style="font-size:0.75rem;color:#94a3b8;margin-top:2px">Direct runtime and accuracy comparison of photogrammetry engines</div>
+        </div>
+        <span style="font-size:0.7rem;background:rgba(16,185,129,0.2);color:#6ee7b7;padding:3px 10px;border-radius:4px;font-weight:600">Slide 3 / 5</span>
+      </div>
+      <div class="drone-slide-content">
+        <table class="drone-table" style="font-size:0.75rem">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th style="color:#38bdf8">ArcGIS Pro</th>
+              <th style="color:#a855f7">Agisoft Metashape</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>GPU Hardware</strong></td>
+              <td>NVIDIA L40S-12Q</td>
+              <td>NVIDIA GeForce RTX 3070</td>
+            </tr>
+            <tr>
+              <td><strong>Total Processing Time</strong></td>
+              <td style="color:#ef4444">4 Hours 3 Mins 33 Secs</td>
+              <td style="color:#22c55e;font-weight:700">47 Minutes 19 Seconds (5.1x faster)</td>
+            </tr>
+            <tr>
+              <td><strong>Tie Points</strong></td>
+              <td>6,204,525</td>
+              <td style="color:#22c55e;font-weight:600">7,878,546 (+27%)</td>
+            </tr>
+            <tr>
+              <td><strong>GPS Accuracy</strong></td>
+              <td style="color:#22c55e;font-weight:600">Average 22 cm</td>
+              <td>52.9 cm</td>
+            </tr>
+            <tr>
+              <td><strong>Pixel Accuracy</strong></td>
+              <td style="color:#22c55e;font-weight:600">0.44 pix</td>
+              <td>0.727 pix</td>
+            </tr>
+            <tr>
+              <td><strong>Headache Factor</strong></td>
+              <td style="color:#ef4444">5 / 5</td>
+              <td style="color:#22c55e">2 / 5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>`
+  },
+  {
+    num: 4,
+    title: 'Key Learnings',
+    subtitle: 'Technical Takeaways & Scaling',
+    thumbImg: 'media/Drone-Photogrammetry/image6.jpg',
+    miniPreview: () => `
+      <div style="width:100%;height:100%;display:flex;flex-direction:column;background:#0b1120;padding:4px 5px;box-sizing:border-box;gap:3px;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(251,191,36,0.4);padding-bottom:2px">
+          <div style="display:flex;align-items:center;gap:3px">
+            <span style="width:4px;height:4px;border-radius:50%;background:#fbbf24"></span>
+            <span style="font-size:0.52rem;font-weight:700;color:#f8fafc;line-height:1">Key Learnings</span>
+          </div>
+          <span style="font-size:0.42rem;background:rgba(251,191,36,0.25);color:#fde047;padding:0 3px;border-radius:2px;font-weight:700">4</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px;flex:1;justify-content:center">
+          <div style="background:#111827;border-left:2px solid #38bdf8;padding:2px 4px;border-radius:2px">
+            <div style="font-size:0.38rem;color:#cbd5e1;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">📌 .tif vs .obj metadata</div>
+          </div>
+          <div style="background:#111827;border-left:2px solid #f97316;padding:2px 4px;border-radius:2px">
+            <div style="font-size:0.38rem;color:#cbd5e1;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">📌 26GB Wingtra compute</div>
+          </div>
+          <div style="background:#111827;border-left:2px solid #22c55e;padding:2px 4px;border-radius:2px">
+            <div style="font-size:0.38rem;color:#cbd5e1;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">📌 5.1x Metashape speed</div>
+          </div>
+        </div>
+      </div>`,
+    render: () => `
+      <div class="drone-slide-header">
+        <div>
+          <h2 style="margin:0;font-size:1.15rem;color:#f8fafc;display:flex;align-items:center;gap:8px">
+            <i data-lucide="lightbulb" style="width:20px;height:20px;color:#fbbf24"></i> Key Technical Learnings
+          </h2>
+          <div style="font-size:0.75rem;color:#94a3b8;margin-top:2px">Dataset scaling, coordinate metadata &amp; photogrammetry pipeline takeaways</div>
+        </div>
+        <span style="font-size:0.7rem;background:rgba(251,191,36,0.2);color:#fde047;padding:3px 10px;border-radius:4px;font-weight:600">Slide 4 / 5</span>
+      </div>
+      <div class="drone-slide-content">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:12px;width:100%">
+          <div style="background:#111827;border-radius:8px;padding:16px;border:1px solid rgba(56,189,248,0.3);display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <i data-lucide="layers" style="width:18px;height:18px;color:#38bdf8"></i>
+              <strong style="color:#f8fafc;font-size:0.85rem">Georeferencing Metadata</strong>
+            </div>
+            <p style="margin:0;font-size:0.78rem;color:#cbd5e1;line-height:1.6">
+              An <code>.obj</code> file format does not include GPS coordinate position metadata, while a <code>.tif</code> GeoTIFF file preserves coordinate reference systems (CRS) and spatial anchoring directly within the raster headers.
+            </p>
+          </div>
+
+          <div style="background:#111827;border-radius:8px;padding:16px;border:1px solid rgba(249,115,22,0.3);display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <i data-lucide="hard-drive" style="width:18px;height:18px;color:#f97316"></i>
+              <strong style="color:#f8fafc;font-size:0.85rem">Dataset Scale &amp; Compute</strong>
+            </div>
+            <p style="margin:0;font-size:0.78rem;color:#cbd5e1;line-height:1.6">
+              The fixed-wing <em>Orangina Wingtra</em> survey required substantially more compute resources (<strong>26 GB dataset, 763 high-res photos</strong>) compared to the quadcopter <em>Quimby</em> flight (<strong>3 GB dataset, 431 photos</strong>).
+            </p>
+          </div>
+
+          <div style="background:#111827;border-radius:8px;padding:16px;border:1px solid rgba(34,197,94,0.3);display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <i data-lucide="zap" style="width:18px;height:18px;color:#22c55e"></i>
+              <strong style="color:#f8fafc;font-size:0.85rem">Processing Acceleration</strong>
+            </div>
+            <p style="margin:0;font-size:0.78rem;color:#cbd5e1;line-height:1.6">
+              Agisoft Metashape reconstructed tie points <strong>5.1x faster</strong> than ArcGIS Pro on consumer RTX hardware, while synthesizing <strong>27% denser point cloud coverage</strong> (7.87M vs 6.20M points).
+            </p>
+          </div>
+        </div>
+      </div>`
+  },
+  {
+    num: 5,
+    title: 'Drone Video',
+    subtitle: 'Aerial Sizzle Reel',
+    thumbImg: 'media/Drone-Photogrammetry/image7.jpg',
+    miniPreview: () => `
+      <div style="width:100%;height:100%;display:flex;flex-direction:column;background:#0b1120;padding:4px 5px;box-sizing:border-box;gap:3px;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(236,72,153,0.4);padding-bottom:2px">
+          <div style="display:flex;align-items:center;gap:3px">
+            <span style="width:4px;height:4px;border-radius:50%;background:#ec4899"></span>
+            <span style="font-size:0.52rem;font-weight:700;color:#f8fafc;line-height:1">Drone Video</span>
+          </div>
+          <span style="font-size:0.42rem;background:rgba(236,72,153,0.25);color:#f472b6;padding:0 3px;border-radius:2px;font-weight:700">5</span>
+        </div>
+        <div style="flex:1;background:#000;border:1px solid rgba(236,72,153,0.35);border-radius:2px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center">
+          <img src="media/Drone-Photogrammetry/image7.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.7" alt="Video Reel">
+          <div style="width:18px;height:18px;border-radius:50%;background:rgba(236,72,153,0.9);display:flex;align-items:center;justify-content:center;position:absolute;box-shadow:0 2px 6px rgba(0,0,0,0.6)">
+            <span style="color:#fff;font-size:0.5rem;margin-left:1px;line-height:1">▶</span>
+          </div>
+          <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:rgba(255,255,255,0.2)">
+            <div style="width:42%;height:100%;background:#ec4899"></div>
+          </div>
+        </div>
+      </div>`,
+    render: () => `
+      <div class="drone-slide-header">
+        <div>
+          <h2 style="margin:0;font-size:1.15rem;color:#f8fafc;display:flex;align-items:center;gap:8px">
+            <i data-lucide="video" style="width:20px;height:20px;color:#ec4899"></i> Drone Video — Aerial Sizzle Reel
+          </h2>
+          <div style="font-size:0.75rem;color:#94a3b8;margin-top:2px">Survey flight capture and landscape flyover</div>
+        </div>
+        <span style="font-size:0.7rem;background:rgba(236,72,153,0.2);color:#f472b6;padding:3px 10px;border-radius:4px;font-weight:600">Slide 5 / 5</span>
+      </div>
+      <div class="drone-slide-content" style="align-items:center;justify-content:center">
+        <div style="width:100%;max-width:640px;background:#000;border-radius:8px;padding:6px;border:1px solid rgba(236,72,153,0.3);box-shadow:0 12px 36px rgba(0,0,0,0.8)">
+          <video id="drone-video-player" controls loop playsinline poster="media/Drone-Photogrammetry/image7.jpg" style="max-height:330px;width:100%;border-radius:6px;background:#000;display:block;margin:0 auto;object-fit:contain">
+            <source src="media/Drone-Photogrammetry/sizzleReel.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div style="font-size:0.71rem;color:#94a3b8;margin-top:6px;text-align:center;display:flex;align-items:center;justify-content:center">
+            <span>🎬 42s Aerial Drone Sizzle Reel</span>
+          </div>
+        </div>
+      </div>`
+  }
+];
+
+function initDroneViewer() {
+  droneInitialized = true;
+  const filmstrip = document.getElementById('drone-filmstrip');
+  if (filmstrip) {
+    filmstrip.innerHTML = DRONE_SLIDES.map((s, i) => `
+      <div class="drone-thumb-item ${i === 0 ? 'active' : ''}" id="drone-thumb-${i}" onclick="switchDroneSlide(${i})">
+        <div class="drone-thumb-preview">
+          ${s.miniPreview ? s.miniPreview() : `<img src="${s.thumbImg}" onerror="this.src='media/Drone-Photogrammetry/image4.png'" alt="Slide ${s.num}">`}
+        </div>
+        <div class="drone-thumb-label">${s.num}. ${s.title}</div>
+      </div>
+    `).join('');
+  }
+  switchDroneSlide(0);
+}
+
+function switchDroneSlide(idx) {
+  if (idx < 0 || idx >= DRONE_SLIDES.length) return;
+  const droneVid = document.getElementById('drone-video-player');
+  if (droneVid && !droneVid.paused) droneVid.pause();
+  currentDroneSlide = idx;
+  const card = document.getElementById('drone-slide-card');
+  const counter = document.getElementById('drone-slide-counter');
+  if (counter) counter.textContent = `Slide ${idx + 1} of ${DRONE_SLIDES.length}`;
+  
+  document.querySelectorAll('.drone-thumb-item').forEach((item, i) => {
+    const isActive = (i === idx);
+    item.classList.toggle('active', isActive);
+    if (isActive) {
+      item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+  });
+  
+  if (card) {
+    card.innerHTML = DRONE_SLIDES[idx].render();
+    lucide.createIcons();
+  }
+}
+
+function prevDroneSlide() {
+  if (currentDroneSlide > 0) switchDroneSlide(currentDroneSlide - 1);
+}
+
+function nextDroneSlide() {
+  if (currentDroneSlide < DRONE_SLIDES.length - 1) switchDroneSlide(currentDroneSlide + 1);
+}
+
+function switchDroneTab(tab) {
+  if (tab === 'cesium') switchDroneSlide(0);
+  else if (tab === 'arcgis' || tab === 'renders') switchDroneSlide(1);
+  else if (tab === 'bench' || tab === 'ortho') switchDroneSlide(2);
+  else if (tab === 'learnings') switchDroneSlide(3);
+  else if (tab === 'video') switchDroneSlide(4);
+  else switchDroneSlide(0);
+}
+
+function reloadCesiumIframe() {
+  const frame = document.getElementById('cesium-story-iframe');
+  if (frame) {
+    const currentSrc = frame.src;
+    frame.src = '';
+    setTimeout(() => { frame.src = currentSrc; }, 50);
+  }
+}
+
+// Up and Down arrow key navigation for slides and preview filmstrip
+window.addEventListener('keydown', (e) => {
+  const droneWin = document.getElementById('drone-win');
+  if (droneWin && droneWin.classList.contains('focused') && !droneWin.classList.contains('minimized')) {
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      prevDroneSlide();
+    } else if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      nextDroneSlide();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      prevDroneSlide();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      nextDroneSlide();
+    }
+  }
+});
+
+// Spacebar control for robot and drone video playback
+window.addEventListener('keydown', (e) => {
+  if (e.key === ' ' || e.code === 'Space') {
+    const tag = (e.target && e.target.tagName) ? e.target.tagName.toUpperCase() : '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || (e.target && e.target.isContentEditable)) return;
+    if (e.target && (e.target.closest('#ps-body') || e.target.closest('#vm-term'))) return;
+
+    const robotVid = document.getElementById('robot-video-player');
+    const droneVid = document.getElementById('drone-video-player');
+    const robotWin = document.getElementById('robot-win');
+    const droneWin = document.getElementById('drone-win');
+
+    let handled = false;
+
+    // If robot window is focused
+    if (robotWin && robotWin.classList.contains('focused') && !robotWin.classList.contains('minimized')) {
+      if (robotVid) {
+        if (!robotVid.paused) {
+          robotVid.pause();
+        } else {
+          robotVid.play();
+        }
+        handled = true;
+      }
+    }
+    // If drone window is focused
+    else if (droneWin && droneWin.classList.contains('focused') && !droneWin.classList.contains('minimized')) {
+      if (droneVid) {
+        if (!droneVid.paused) {
+          droneVid.pause();
+        } else {
+          droneVid.play();
+        }
+        handled = true;
+      }
+    }
+    // If either video is playing anywhere
+    else {
+      if (robotVid && !robotVid.paused) {
+        robotVid.pause();
+        handled = true;
+      }
+      if (droneVid && !droneVid.paused) {
+        droneVid.pause();
+        handled = true;
+      }
+    }
+
+    if (handled) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }
 });
 
 // ================================================================

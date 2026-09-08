@@ -1,0 +1,9 @@
+{
+  "name": "jacob-portfolio",
+  "version": "1.0.0",
+  "description": "Jacob Williams - Personal Website & Simulated PC Portfolio",
+  "scripts": {
+    "dev": "npx serve -l 3000 .",
+    "start": "npx serve -l 3000 ."
+  }
+}
